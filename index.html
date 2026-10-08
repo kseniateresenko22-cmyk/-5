@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЕГЭ Математика Профиль • Задание 4</title>
+    <style>
+        :root {
+            --bg-primary: #f5f5f7;
+            --bg-secondary: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --text-tertiary: #86868b;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --accent-soft: rgba(0, 113, 227, 0.08);
+            --success: #34c759;
+            --success-soft: rgba(52, 199, 89, 0.12);
+            --error: #ff3b30;
+            --error-soft: rgba(255, 59, 48, 0.1);
+            --warning: #ff9500;
+            --border: #d2d2d7;
+            --border-soft: #e5e5ea;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius: 14px;
+            --radius-sm: 10px;
+            --radius-lg: 20px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 24px 16px 60px;
+        }
+
+        @media (min-width: 640px) {
+            main { padding: 40px 24px 80px; }
+        }
+
+        /* Header */
+        .app-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .app-header .eyebrow {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.3px;
+            margin-bottom: 8px;
+            padding: 4px 12px;
+            background: var(--accent-soft);
+            border-radius: 100px;
+        }
+
+        .app-header h1 {
+            font-size: clamp(24px, 5vw, 30px);
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .app-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Card */
+        .card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: clamp(20px, 5vw, 32px);
+            box-shadow: var(--shadow);
+            margin-bottom: 16px;
+            border: 1px solid var(--border-soft);
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .label-hint {
+            color: var(--text-tertiary);
+            font-weight: 400;
+            font-size: 13px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+            font-family: inherit;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            transition: var(--transition);
+            min-height: 44px;
+        }
+
+        input[type="text"]:hover {
+            border-color: #b0b0b5;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-soft);
+        }
+
+        input[type="text"]:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 1px;
+        }
+
+        input.error {
+            border-color: var(--error);
+            background: var(--error-soft);
+        }
+
+        .error-msg {
+            color: var(--error);
+            font-size: 13px;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .error-msg.show {
+            display: block;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 980px;
+            font-size: 15px;
+            font-weight: 500;
+            font-family: inherit;
+            cursor: pointer;
+            transition: var(--transition);
+            min-height: 44px;
+            min-width: 44px;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .btn:disabled {
+            background: var(--border);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .btn-secondary {
+            background: var(--bg-primary);
+            color: var(--accent);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: #ececee;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .btn-ghost:hover {
+            background: var(--accent-soft);
+        }
+
+        /* Info box */
+        .info-box {
+            margin-top: 20px;
+            padding: 14px 16px;
+            background: var(--bg-primary);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .info-box strong {
+            color: var(--text-primary);
+        }
+
+        /* Progress */
+        .progress-wrap {
+            margin-bottom: 20px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--bg-primary);
+            border-radius: 100px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 100px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Question */
+        .q-meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 500;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+        }
+
+        .chip.difficulty-basic {
+            background: rgba(52, 199, 89, 0.12);
+            color: #1e7e34;
+        }
+
+        .chip.difficulty-medium {
+            background: rgba(255, 149, 0, 0.14);
+            color: #b86900;
+        }
+
+        .q-text {
+            font-size: clamp(16px, 4vw, 17px);
+            margin-bottom: 20px;
+            line-height: 1.65;
+            color: var(--text-primary);
+        }
+
+        .q-text .formula {
+            display: inline-block;
+            font-family: 'SF Mono', Menlo, Consolas, monospace;
+            background: var(--bg-primary);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.95em;
+        }
+
+        /* Feedback */
+        .feedback {
+            padding: 14px 16px;
+            border-radius: var(--radius-sm);
+            margin-top: 16px;
+            font-size: 14px;
+            animation: slideIn 0.3s ease;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feedback-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: white;
+            margin-top: 1px;
+        }
+
+        .feedback-correct {
+            background: var(--success-soft);
+            color: #1e7e34;
+        }
+
+        .feedback-correct .feedback-icon {
+            background: var(--success);
+        }
+
+        .feedback-incorrect {
+            background: var(--error-soft);
+            color: #b42318;
+        }
+
+        .feedback-incorrect .feedback-icon {
+            background: var(--error);
+        }
+
+        .feedback-body strong {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* Solution */
+        .solution {
+            margin-top: 16px;
+            padding: 16px;
+            background: var(--bg-primary);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent);
+            animation: slideIn 0.3s ease;
+        }
+
+        .solution h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .solution-content {
+            font-size: 14px;
+            line-height: 1.75;
+            color: var(--text-primary);
+            white-space: pre-wrap;
+            font-family: inherit;
+        }
+
+        .solution-content .step {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .solution-content .answer-line {
+            display: block;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--border);
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        @media (min-width: 480px) {
+            .nav-buttons.two-col {
+                grid-template-columns: auto 1fr;
+            }
+            .nav-buttons.three-col {
+                grid-template-columns: auto 1fr auto;
+            }
+        }
+
+        /* Results */
+        .results-hero {
+            text-align: center;
+            padding: 24px 16px 8px;
+        }
+
+        .score-ring {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 16px;
+        }
+
+        .score-ring svg {
+            transform: rotate(-90deg);
+        }
+
+        .score-ring-bg {
+            stroke: var(--bg-primary);
+        }
+
+        .score-ring-fill {
+            stroke: var(--accent);
+            transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .score-ring-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-ring-text .big {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .score-ring-text .small {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .results-title {
+            font-size: clamp(20px, 4.5vw, 24px);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .results-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .stat {
+            background: var(--bg-primary);
+            padding: 14px 10px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .stat-value.correct { color: var(--success); }
+        .stat-value.incorrect { color: var(--error); }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .review-list {
+            margin-top: 20px;
+        }
+
+        .review-list h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .review-item {
+            padding: 14px;
+            margin-bottom: 10px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-primary);
+            border-left: 3px solid var(--border);
+        }
+
+        .review-item.correct {
+            border-left-color: var(--success);
+        }
+
+        .review-item.incorrect {
+            border-left-color: var(--error);
+        }
+
+        .review-item.skipped {
+            border-left-color: var(--warning);
+        }
+
+        .review-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .review-num {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .review-badge {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .review-badge.correct { background: var(--success-soft); color: #1e7e34; }
+        .review-badge.incorrect { background: var(--error-soft); color: #b42318; }
+        .review-badge.skipped { background: rgba(255, 149, 0, 0.14); color: #b86900; }
+
+        .review-question {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .review-answers {
+            font-size: 13px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 12px;
+        }
+
+        .review-answers span {
+            color: var(--text-secondary);
+        }
+
+        .review-answers strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Empty / Thank you */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state .emoji {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Small tweaks */
+        .divider {
+            height: 1px;
+            background: var(--border-soft);
+            margin: 16px 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-tertiary);
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+    <main id="app" aria-live="polite"></main>
+
+    <script>
+    /* =========================================================
+       ТРЕНАЖЁР ЕГЭ • ЗАДАНИЕ 4 (ТЕОРИЯ ВЕРОЯТНОСТЕЙ)
+       Структура: constants → state → render → handlers → init
+       ========================================================= */
+
+    // ---------- CONSTANTS ----------
+    const STORAGE_KEY = 'ege_math_z4_progress_v1';
+    const TOLERANCE = 0.01; // допуск при сравнении десятичных ответов
+
+    // База заданий 4 (теория вероятностей) — базовый и средний уровень
+    const QUESTIONS = [
+        {
+            id: 1,
+            topic: 'Классическая вероятность',
+            difficulty: 'basic',
+            question: 'Бросают игральную кость. Найдите вероятность того, что выпавшее число очков будет чётным. Ответ округлите до сотых.',
+            answer: '0.5',
+            solution: [
+                'Всего равновозможных исходов: 6 (числа 1, 2, 3, 4, 5, 6).',
+                'Чётные числа: 2, 4, 6 — всего 3 благоприятных исхода.',
+                'По классической формуле вероятности:',
+                'P = m / n = 3 / 6 = 0,5.'
+            ]
+        },
+        {
+            id: 2,
+            topic: 'Классическая вероятность',
+            difficulty: 'basic',
+            question: 'В урне 8 красных и 12 синих шаров. Наугад вынимают один шар. Найдите вероятность того, что он окажется синим. Ответ округлите до сотых.',
+            answer: '0.6',
+            solution: [
+                'Всего шаров: 8 + 12 = 20.',
+                'Синих шаров: 12.',
+                'P = 12 / 20 = 0,6.'
+            ]
+        },
+        {
+            id: 3,
+            topic: 'Противоположные события',
+            difficulty: 'basic',
+            question: 'Вероятность того, что новая батарейка бракованная, равна 0,05. Покупатель выбирает одну батарейку. Найдите вероятность того, что она исправна.',
+            answer: '0.95',
+            solution: [
+                'События «батарейка бракованная» и «батарейка исправна» — противоположные.',
+                'Сумма их вероятностей равна 1.',
+                'P(исправна) = 1 − P(бракованная) = 1 − 0,05 = 0,95.'
+            ]
+        },
+        {
+            id: 4,
+            topic: 'Теорема умножения',
+            difficulty: 'medium',
+            question: 'Стрелок стреляет по мишени с вероятностью попадания 0,8. Он делает два выстрела независимо. Найдите вероятность того, что оба выстрела попадут в цель. Ответ округлите до сотых.',
+            answer: '0.64',
+            solution: [
+                'События независимы, поэтому применяем теорему умножения:',
+                'P(оба попадания) = P₁ · P₂ = 0,8 · 0,8 = 0,64.'
+            ]
+        },
+        {
+            id: 5,
+            topic: 'Теорема сложения',
+            difficulty: 'medium',
+            question: 'Вероятность того, что товар окажется первого сорта, равна 0,7, а второго сорта — 0,25. Найдите вероятность того, что случайно выбранный товар окажется первого или второго сорта.',
+            answer: '0.95',
+            solution: [
+                'События «первый сорт» и «второй сорт» несовместны (товар не может быть одновременно двух сортов).',
+                'По теореме сложения для несовместных событий:',
+                'P(A ∪ B) = P(A) + P(B) = 0,7 + 0,25 = 0,95.'
+            ]
+        },
+        {
+            id: 6,
+            topic: 'Независимые события',
+            difficulty: 'medium',
+            question: 'Вероятность того, что товар в магазине «А» окажется в наличии, равна 0,7, а в магазине «Б» — 0,8. Магазины работают независимо. Найдите вероятность того, что ни в одном магазине товара нет.',
+            answer: '0.06',
+            solution: [
+                'Вероятность отсутствия товара в «А»: 1 − 0,7 = 0,3.',
+                'Вероятность отсутствия товара в «Б»: 1 − 0,8 = 0,2.',
+                'События независимы, поэтому:',
+                'P(нет нигде) = 0,3 · 0,2 = 0,06.'
+            ]
+        },
+        {
+            id: 7,
+            topic: 'Хотя бы одно событие',
+            difficulty: 'medium',
+            question: 'Вероятность отказа датчика №1 равна 0,2, датчика №2 — 0,3. Датчики работают независимо. Найдите вероятность того, что хотя бы один датчик сработает (не откажет).',
+            answer: '0.86',
+            solution: [
+                'Найдём вероятность того, что оба откажут:',
+                'P(оба откажут) = 0,2 · 0,3 = 0,06.',
+                'Событие «хотя бы один сработает» — противоположное:',
+                'P(хотя бы один) = 1 − 0,06 = 0,94.',
+                'Но по условию нужно: хотя бы один не откажет. Пересчитаем:',
+                'P(оба откажут) = 0,2 · 0,3 = 0,06.',
+                'P(хотя бы один сработает) = 1 − 0,06 = 0,94.',
+                'Однако в задании вероятность отказа — это «не сработает». Тогда «сработает»:',
+                'P₁ = 1 − 0,2 = 0,8; P₂ = 1 − 0,3 = 0,7.',
+                'P(оба не сработают) = 0,2 · 0,3 = 0,06.',
+                'P(хотя бы один сработает) = 1 − 0,06 = 0,94.'
+            ]
+        },
+        {
+            id: 8,
+            topic: 'Два броска монеты',
+            difficulty: 'medium',
+            question: 'Монету бросают дважды. Найдите вероятность того, что оба раза выпадет «орёл». Ответ округлите до сотых.',
+            answer: '0.25',
+            solution: [
+                'Всего равновозможных исходов при двух бросках: 4 (ОО, ОР, РО, РР).',
+                'Благоприятный исход: ОО — всего 1.',
+                'P = 1 / 4 = 0,25.',
+                'Или через умножение независимых событий: 0,5 · 0,5 = 0,25.'
+            ]
+        },
+        {
+            id: 9,
+            topic: 'Сумма на двух кубиках',
+            difficulty: 'medium',
+            question: 'Бросают две игральные кости. Найдите вероятность того, что сумма выпавших очков равна 8. Ответ округлите до сотых.',
+            answer: '0.14',
+            solution: [
+                'Всего исходов: 6 · 6 = 36.',
+                'Благоприятные исходы (сумма = 8):',
+                '(2,6), (3,5), (4,4), (5,3), (6,2) — всего 5.',
+                'P = 5 / 36 ≈ 0,1389 ≈ 0,14.'
+            ]
+        },
+        {
+            id: 10,
+            topic: 'Формула Бернулли',
+            difficulty: 'medium',
+            question: 'Вероятность попадания в цель при одном выстреле равна 0,6. Стрелок делает 3 выстрела. Найдите вероятность того, что он поразит цель ровно 2 раза. Ответ округлите до сотых.',
+            answer: '0.43',
+            solution: [
+                'Применяем формулу Бернулли: P = C(n,k) · p^k · q^(n−k).',
+                'n = 3, k = 2, p = 0,6, q = 1 − 0,6 = 0,4.',
+                'C(3,2) = 3.',
+                'P = 3 · 0,6² · 0,4¹ = 3 · 0,36 · 0,4 = 0,432 ≈ 0,43.'
+            ]
+        },
+        {
+            id: 11,
+            topic: 'Геометрическая вероятность',
+            difficulty: 'medium',
+            question: 'На отрезке [0; 10] наугад выбирают точку x. Найдите вероятность того, что она попадёт на отрезок [2; 7].',
+            answer: '0.5',
+            solution: [
+                'Длина большого отрезка: 10 − 0 = 10.',
+                'Длина малого отрезка: 7 − 2 = 5.',
+                'По формуле геометрической вероятности:',
+                'P = 5 / 10 = 0,5.'
+            ]
+        },
+        {
+            id: 12,
+            topic: 'Условная вероятность',
+            difficulty: 'medium',
+            question: 'В классе 20 учеников, из них 12 девочек. Известно, что 8 девочек занимаются в спортивной секции. Найдите вероятность того, что случайно выбранная девочка занимается в секции. Ответ округлите до сотых.',
+            answer: '0.67',
+            solution: [
+                'Условная вероятность: искомое событие — «занимается в секции» при условии, что выбрана девочка.',
+                'Всего девочек: 12.',
+                'Девочек в секции: 8.',
+                'P = 8 / 12 = 2/3 ≈ 0,6667 ≈ 0,67.'
+            ]
+        }
+    ];
+
+    // ---------- STATE ----------
+    let state = {
+        screen: 'start',       // start | quiz | results
+        studentName: '',
+        studentClass: '',
+        currentQuestion: 0,
+        answers: [],           // массив строк (ответы пользователя)
+        checked: [],           // массив булевых — проверено ли задание
+        showSolution: [],      // массив булевых — показано ли решение
+        startTime: null,
+        errors: { name: false, class: false }
+    };
+
+    // ---------- UTILS ----------
+    // Сравнение ответов с допуском для чисел
+    function isAnswerCorrect(userAnswer, correctAnswer) {
+        if (!userAnswer) return false;
+        const u = userAnswer.toString().trim().replace(',', '.');
+        const c = correctAnswer.toString().trim().replace(',', '.');
+        if (u === c) return true;
+        const uNum = parseFloat(u);
+        const cNum = parseFloat(c);
+        if (!isNaN(uNum) && !isNaN(cNum)) {
+            return Math.abs(uNum - cNum) <= TOLERANCE;
+        }
+        return false;
+    }
+
+    // Загрузка прогресса (ФИО и класс)
+    function loadProgress() {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (!saved) return;
+            const data = JSON.parse(saved);
+            if (data && data.studentName && data.studentClass) {
+                state.studentName = data.studentName;
+                state.studentClass = data.studentClass;
+            }
+        } catch (e) {
+            console.warn('Не удалось загрузить прогресс:', e);
+        }
+    }
+
+    // Сохранение прогресса
+    function saveProgress() {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({
+                studentName: state.studentName,
+                studentClass: state.studentClass,
+                timestamp: Date.now()
+            }));
+        } catch (e) {
+            console.warn('Не удалось сохранить прогресс:', e);
+        }
+    }
+
+    // Экранирование текста (защита от инъекций при вставке в DOM)
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    // ---------- RENDER ----------
+    function render() {
+        const app = document.getElementById('app');
+        // Очистка безопасным способом
+        while (app.firstChild) app.removeChild(app.firstChild);
+        app.classList.remove('fade-in');
+        // Форсированный reflow для перезапуска анимации
+        void app.offsetWidth;
+        app.classList.add('fade-in');
+
+        switch (state.screen) {
+            case 'start': renderStart(); break;
+            case 'quiz': renderQuiz(); break;
+            case 'results': renderResults(); break;
+        }
+    }
+
+    // Экран «Старт»
+    function renderStart() {
+        const app = document.getElementById('app');
+
+        const header = document.createElement('header');
+        header.className = 'app-header';
+        header.innerHTML = `
+            <span class="eyebrow">ЕГЭ • Профиль • Задание 4</span>
+            <h1>Теория вероятностей</h1>
+            <p>Тренажёр для 10 класса</p>
+        `;
+        app.appendChild(header);
+
+        const card = document.createElement('section');
+        card.className = 'card';
+        card.setAttribute('aria-labelledby', 'start-title');
+
+        const title = document.createElement('h2');
+        title.id = 'start-title';
+        title.textContent = 'Перед началом теста';
+        title.style.cssText = 'font-size:18px;font-weight:600;margin-bottom:4px;';
+        card.appendChild(title);
+
+        const subtitle = document.createElement('p');
+        subtitle.textContent = 'Укажите свои данные — они понадобятся для отчёта.';
+        subtitle.style.cssText = 'color:var(--text-secondary);font-size:14px;margin-bottom:20px;';
+        card.appendChild(subtitle);
+
+        // Форма
+        const form = document.createElement('form');
+        form.id = 'startForm';
+        form.setAttribute('novalidate', '');
+
+        // ФИО
+        const nameGroup = document.createElement('div');
+        nameGroup.className = 'form-group';
+        nameGroup.innerHTML = `
+            <label for="fio">ФИО ученика <span class="label-hint">— обязательно</span></label>
+            <input type="text" id="fio" name="fio" autocomplete="name"
+                   placeholder="Иванов Иван Иванович"
+                   value="${escapeHtml(state.studentName)}"
+                   aria-required="true" ${state.errors.name ? 'class="error" aria-invalid="true"' : ''}>
+            <div class="error-msg ${state.errors.name ? 'show' : ''}" id="fio-error" role="alert">
+                Пожалуйста, укажите ФИО.
+            </div>
+        `;
+        form.appendChild(nameGroup);
+
+        // Класс
+        const classGroup = document.createElement('div');
+        classGroup.className = 'form-group';
+        classGroup.innerHTML = `
+            <label for="klass">Класс <span class="label-hint">— например, 10А</span></label>
+            <input type="text" id="klass" name="klass"
+                   placeholder="10А"
+                   value="${escapeHtml(state.studentClass)}"
+                   maxlength="10"
+                   aria-required="true" ${state.errors.class ? 'class="error" aria-invalid="true"' : ''}>
+            <div class="error-msg ${state.errors.class ? 'show' : ''}" id="klass-error" role="alert">
+                Укажите класс.
+            </div>
+        `;
+        form.appendChild(classGroup);
+
+        const submitBtn = document.createElement('button');
+        submitBtn.type = 'submit';
+        submitBtn.className = 'btn btn-block';
+        submitBtn.textContent = 'Начать тест';
+        form.appendChild(submitBtn);
+
+        form.addEventListener('submit', handleStartSubmit);
+
+        card.appendChild(form);
+
+        // Инфо
+        const info = document.createElement('div');
+        info.className = 'info-box';
+        info.innerHTML = `
+            <strong>О задании 4.</strong> В нём проверяется умение решать задачи по теории вероятностей: классическая вероятность, теоремы сложения и умножения, противоположные события, формула Бернулли.<br><br>
+            <strong>В тесте:</strong> ${QUESTIONS.length} заданий • уровни: базовый и средний • после ответа можно посмотреть подробное решение.<br><br>
+            <strong>Формат ответа:</strong> десятичная дробь (например, <code>0,5</code> или <code>0.5</code>).
+        `;
+        card.appendChild(info);
+
+        app.appendChild(card);
+
+        // Фокус на первое пустое поле
+        requestAnimationFrame(() => {
+            const firstEmpty = !state.studentName
+                ? document.getElementById('fio')
+                : document.getElementById('klass');
+            if (firstEmpty) firstEmpty.focus();
+        });
+    }
+
+    // Экран «Тест»
+    function renderQuiz() {
+        const app = document.getElementById('app');
+        const idx = state.currentQuestion;
+        const q = QUESTIONS[idx];
+        const progress = ((idx + 1) / QUESTIONS.length) * 100;
+
+        // Шапка
+        const header = document.createElement('header');
+        header.className = 'app-header';
+        header.innerHTML = `
+            <span class="eyebrow">Задание ${idx + 1} из ${QUESTIONS.length}</span>
+            <h1>${escapeHtml(q.topic)}</h1>
+            <p>${escapeHtml(state.studentName)} • ${escapeHtml(state.studentClass)}</p>
+        `;
+        app.appendChild(header);
+
+        // Прогресс
+        const progressWrap = document.createElement('div');
+        progressWrap.className = 'progress-wrap';
+        progressWrap.innerHTML = `
+            <div class="progress-info">
+                <span>Прогресс</span>
+                <span>${idx + 1} / ${QUESTIONS.length}</span>
+            </div>
+            <div class="progress-bar" role="progressbar"
+                 aria-valuenow="${Math.round(progress)}" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-fill" style="width:${progress}%"></div>
+            </div>
+        `;
+        app.appendChild(progressWrap);
+
+        // Карточка задания
+        const card = document.createElement('section');
+        card.className = 'card';
+        card.setAttribute('aria-labelledby', 'q-title');
+
+        // Мета
+        const meta = document.createElement('div');
+        meta.className = 'q-meta';
+        const diffLabel = q.difficulty === 'basic' ? 'Базовый' : 'Средний';
+        const diffClass = q.difficulty === 'basic' ? 'difficulty-basic' : 'difficulty-medium';
+        meta.innerHTML = `
+            <span class="chip">№ ${idx + 1}</span>
+            <span class="chip ${diffClass}">${diffLabel}</span>
+        `;
+        card.appendChild(meta);
+
+        // Текст задания
+        const qTitle = document.createElement('h2');
+        qTitle.id = 'q-title';
+        qTitle.className = 'q-text';
+        qTitle.textContent = q.question;
+        card.appendChild(qTitle);
+
+        // Поле ввода
+        const inputGroup = document.createElement('div');
+        inputGroup.className = 'form-group';
+        const inputId = 'answer-input';
+        inputGroup.innerHTML = `
+            <label for="${inputId}">Ваш ответ <span class="label-hint">— десятичная дробь</span></label>
+            <input type="text" id="${inputId}" inputmode="decimal"
+                   placeholder="Например: 0,5"
+                   value="${escapeHtml(state.answers[idx] || '')}"
+                   aria-describedby="answer-hint">
+            <div id="answer-hint" style="font-size:12px;color:var(--text-tertiary);margin-top:6px;">
+                Используйте запятую или точку как разделитель.
+            </div>
+        `;
+        card.appendChild(inputGroup);
+
+        // Обратная связь (если ответ уже проверен)
+        if (state.checked[idx]) {
+            const userAnswer = state.answers[idx] || '';
+            const isCorrect = isAnswerCorrect(userAnswer, q.answer);
+
+            const feedback = document.createElement('div');
+            feedback.className = `feedback ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}`;
+            feedback.setAttribute('role', 'status');
+            feedback.innerHTML = `
+                <div class="feedback-icon">${isCorrect ? '✓' : '✕'}</div>
+                <div class="feedback-body">
+                    <strong>${isCorrect ? 'Верно!' : 'Неверно'}</strong>
+                    ${isCorrect
+                        ? 'Отличная работа — переходите к следующему заданию.'
+                        : `Правильный ответ: <strong>${escapeHtml(q.answer)}</strong>. Изучите решение ниже.`}
+                </div>
+            `;
+            card.appendChild(feedback);
+
+            // Решение
+            if (state.showSolution[idx]) {
+                const sol = document.createElement('div');
+                sol.className = 'solution';
+                const stepsHtml = q.solution.map(s => `<span class="step">${escapeHtml(s)}</span>`).join('');
+                sol.innerHTML = `
+                    <h4>📘 Подробное решение</h4>
+                    <div class="solution-content">
+                        ${stepsHtml}
+                        <span class="answer-line">Ответ: ${escapeHtml(q.answer)}</span>
+                    </div>
+                `;
+                card.appendChild(sol);
+            }
+        }
+
+        // Навигация
+        const nav = document.createElement('div');
+        nav.className = 'nav-buttons';
+        const cols = [];
+        if (idx > 0) cols.push('two-col');
+        if (idx > 0 && idx < QUESTIONS.length - 1) cols.push('three-col');
+        if (cols.length) nav.classList.add(cols[cols.length - 1]);
+
+        if (idx > 0) {
+            const prevBtn = document.createElement('button');
+            prevBtn.type = 'button';
+            prevBtn.className = 'btn btn-secondary';
+            prevBtn.textContent = '← Назад';
+            prevBtn.addEventListener('click', handlePrev);
+            nav.appendChild(prevBtn);
+        }
+
+        const checkBtn = document.createElement('button');
+        checkBtn.type = 'button';
+        checkBtn.className = 'btn';
+
+        if (!state.checked[idx]) {
+            checkBtn.textContent = 'Проверить ответ';
+            checkBtn.addEventListener('click', handleCheck);
+        } else if (!state.showSolution[idx] && !isAnswerCorrect(state.answers[idx] || '', q.answer)) {
+            checkBtn.textContent = 'Показать решение';
+            checkBtn.addEventListener('click', handleShowSolution);
+        } else if (state.showSolution[idx]) {
+            checkBtn.textContent = 'Скрыть решение';
+            checkBtn.addEventListener('click', handleHideSolution);
+        } else {
+            checkBtn.textContent = '✓ Ответ верный';
+            checkBtn.disabled = true;
+        }
+        nav.appendChild(checkBtn);
+
+        if (idx < QUESTIONS.length - 1) {
+            const nextBtn = document.createElement('button');
+            nextBtn.type = 'button';
+            nextBtn.className = 'btn btn-secondary';
+            nextBtn.textContent = 'Далее →';
+            nextBtn.addEventListener('click', handleNext);
+            nav.appendChild(nextBtn);
+        } else {
+            const finishBtn = document.createElement('button');
+            finishBtn.type = 'button';
+            finishBtn.className = 'btn';
+            finishBtn.textContent = 'Завершить тест';
+            finishBtn.addEventListener('click', handleFinish);
+            nav.appendChild(finishBtn);
+        }
+
+        card.appendChild(nav);
+        app.appendChild(card);
+
+        // Подвал
+        const footer = document.createElement('p');
+        footer.className = 'footer-note';
+        footer.textContent = 'Прогресс сохраняется автоматически';
+        app.appendChild(footer);
+
+        // Фокус на поле ввода
+        requestAnimationFrame(() => {
+            const input = document.getElementById('answer-input');
+            if (input && !state.checked[idx]) {
+                input.focus();
+                input.select();
+            }
+        });
+
+        // Обработчик ввода ответа
+        const input = document.getElementById('answer-input');
+        if (input) {
+            input.addEventListener('input', (e) => {
+                state.answers[idx] = e.target.value;
+            });
+            // Enter → проверить
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (!state.checked[idx]) handleCheck();
+                }
+            });
+        }
+    }
+
+    // Экран «Результаты»
+    function renderResults() {
+        const app = document.getElementById('app');
+
+        // Подсчёт статистики
+        let correct = 0, incorrect = 0, skipped = 0;
+        QUESTIONS.forEach((q, i) => {
+            const ans = state.answers[i];
+            if (!ans || !ans.trim()) skipped++;
+            else if (isAnswerCorrect(ans, q.answer)) correct++;
+            else incorrect++;
+        });
+
+        const total = QUESTIONS.length;
+        const percent = Math.round((correct / total) * 100);
+        const timeSec = state.startTime ? Math.round((Date.now() - state.startTime) / 1000) : 0;
+        const minutes = Math.floor(timeSec / 60);
+        const seconds = timeSec % 60;
+
+        // Заголовок
+        const header = document.createElement('header');
+        header.className = 'app-header';
+        header.innerHTML = `
+            <span class="eyebrow">Результаты теста</span>
+            <h1>Готово!</h1>
+            <p>${escapeHtml(state.studentName)} • ${escapeHtml(state.studentClass)}</p>
+        `;
+        app.appendChild(header);
+
+        // Карточка с итогом
+        const card = document.createElement('section');
+        card.className = 'card';
+
+        // Кольцо прогресса
+        const hero = document.createElement('div');
+        hero.className = 'results-hero';
+        const radius = 60;
+        const circumference = 2 * Math.PI * radius;
+        const offset = circumference - (percent / 100) * circumference;
+        hero.innerHTML = `
+            <div class="score-ring" aria-label="Результат: ${percent}%">
+                <svg width="140" height="140" viewBox="0 0 140 140">
+                    <circle class="score-ring-bg" cx="70" cy="70" r="${radius}"
+                            fill="none" stroke-width="10"/>
+                    <circle class="score-ring-fill" cx="70" cy="70" r="${radius}"
+                            fill="none" stroke-width="10" stroke-linecap="round"
+                            stroke-dasharray="${circumference}"
+                            stroke-dashoffset="${circumference}"
+                            data-target="${offset}"/>
+                </svg>
+                <div class="score-ring-text">
+                    <span class="big">${percent}%</span>
+                    <span class="small">${correct} из ${total}</span>
+                </div>
+            </div>
+            <h2 class="results-title">${getResultTitle(percent)}</h2>
+            <p class="results-subtitle">${getResultSubtitle(percent)}</p>
+        `;
+        card.appendChild(hero);
+
+        // Статистика
+        const stats = document.createElement('div');
+        stats.className = 'stats-grid';
+        stats.innerHTML = `
+            <div class="stat">
+                <div class="stat-value correct">${correct}</div>
+                <div class="stat-label">Верно</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value incorrect">${incorrect}</div>
+                <div class="stat-label">Ошибок</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">${minutes}:${seconds.toString().padStart(2, '0')}</div>
+                <div class="stat-label">Время</div>
+            </div>
+        `;
+        card.appendChild(stats);
+
+        // Разбор
+        const review = document.createElement('div');
+        review.className = 'review-list';
+        review.innerHTML = `<h3>Разбор заданий</h3>`;
+
+        QUESTIONS.forEach((q, i) => {
+            const ans = state.answers[i];
+            const isSkipped = !ans || !ans.trim();
+            const isCorrect = !isSkipped && isAnswerCorrect(ans, q.answer);
+            const status = isSkipped ? 'skipped' : (isCorrect ? 'correct' : 'incorrect');
+            const statusText = isSkipped ? 'Пропущено' : (isCorrect ? 'Верно' : 'Неверно');
+
+            const item = document.createElement('div');
+            item.className = `review-item ${status}`;
+            item.innerHTML = `
+                <div class="review-head">
+                    <span class="review-num">№ ${i + 1} • ${escapeHtml(q.topic)}</span>
+                    <span class="review-badge ${status}">${statusText}</span>
+                </div>
+                <div class="review-question">${escapeHtml(q.question)}</div>
+                <div class="review-answers">
+                    <span>Ваш ответ:</span>
+                    <strong>${isSkipped ? '—' : escapeHtml(ans)}</strong>
+                    <span>Правильно:</span>
+                    <strong>${escapeHtml(q.answer)}</strong>
+                </div>
+            `;
+            review.appendChild(item);
+        });
+
+        card.appendChild(review);
+
+        // Кнопки действий
+        const actions = document.createElement('div');
+        actions.className = 'nav-buttons two-col';
+        actions.style.marginTop = '24px';
+
+        const retryBtn = document.createElement('button');
+        retryBtn.type = 'button';
+        retryBtn.className = 'btn btn-secondary';
+        retryBtn.textContent = 'Пройти заново';
+        retryBtn.addEventListener('click', handleRetry);
+        actions.appendChild(retryBtn);
+
+        const newBtn = document.createElement('button');
+        newBtn.type = 'button';
+        newBtn.className = 'btn';
+        newBtn.textContent = 'Новый ученик';
+        newBtn.addEventListener('click', handleNewStudent);
+        actions.appendChild(newBtn);
+
+        card.appendChild(actions);
+        app.appendChild(card);
+
+        // Анимация кольца
+        requestAnimationFrame(() => {
+            const fill = document.querySelector('.score-ring-fill');
+            if (fill) {
+                const target = fill.getAttribute('data-target');
+                setTimeout(() => {
+                    fill.style.strokeDashoffset = target;
+                }, 100);
+            }
+        });
+    }
+
+    // ---------- HANDLERS ----------
+    function handleStartSubmit(e) {
+        e.preventDefault();
+        const nameInput = document.getElementById('fio');
+        const classInput = document.getElementById('klass');
+        const name = (nameInput.value || '').trim();
+        const klass = (classInput.value || '').trim();
+
+        // Валидация
+        let hasError = false;
+        state.errors = { name: false, class: false };
+
+        if (!name) {
+            state.errors.name = true;
+            hasError = true;
+        }
+        if (!klass) {
+            state.errors.class = true;
+            hasError = true;
+        }
+        if (hasError) {
+            render();
+            return;
+        }
+
+        state.studentName = name;
+        state.studentClass = klass;
+        state.answers = new Array(QUESTIONS.length).fill('');
+        state.checked = new Array(QUESTIONS.length).fill(false);
+        state.showSolution = new Array(QUESTIONS.length).fill(false);
+        state.currentQuestion = 0;
+        state.startTime = Date.now();
+        state.screen = 'quiz';
+
+        saveProgress();
+        render();
+    }
+
+    function handleCheck() {
+        const idx = state.currentQuestion;
+        const input = document.getElementById('answer-input');
+        const answer = (input.value || '').trim();
+
+        if (!answer) {
+            input.classList.add('error');
+            input.setAttribute('aria-invalid', 'true');
+            input.focus();
+            // Мягкая подсказка
+            const hint = document.getElementById('answer-hint');
+            if (hint) {
+                hint.textContent = 'Введите ответ, чтобы проверить.';
+                hint.style.color = 'var(--error)';
+            }
+            return;
+        }
+
+        state.answers[idx] = answer;
+        state.checked[idx] = true;
+        // Решение показываем только при неправильном ответе
+        const isCorrect = isAnswerCorrect(answer, QUESTIONS[idx].answer);
+        state.showSolution[idx] = !isCorrect;
+        render();
+    }
+
+    function handleShowSolution() {
+        state.showSolution[state.currentQuestion] = true;
+        render();
+    }
+
+    function handleHideSolution() {
+        state.showSolution[state.currentQuestion] = false;
+        render();
+    }
+
+    function handlePrev() {
+        if (state.currentQuestion > 0) {
+            state.currentQuestion--;
+            render();
+        }
+    }
+
+    function handleNext() {
+        if (state.currentQuestion < QUESTIONS.length - 1) {
+            state.currentQuestion++;
+            render();
+        }
+    }
+
+    function handleFinish() {
+        // Предупреждение о пропущенных заданиях
+        const skipped = state.answers.filter(a => !a || !a.trim()).length;
+        if (skipped > 0) {
+            const proceed = window.confirm(
+                `Вы пропустили ${skipped} ${pluralize(skipped, 'задание', 'задания', 'заданий')}.\n\nЗавершить тест и посмотреть результаты?`
+            );
+            if (!proceed) return;
+        }
+        state.screen = 'results';
+        render();
+        // Прокрутка наверх
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleRetry() {
+        state.answers = new Array(QUESTIONS.length).fill('');
+        state.checked = new Array(QUESTIONS.length).fill(false);
+        state.showSolution = new Array(QUESTIONS.length).fill(false);
+        state.currentQuestion = 0;
+        state.startTime = Date.now();
+        state.screen = 'quiz';
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleNewStudent() {
+        state.studentName = '';
+        state.studentClass = '';
+        state.answers = [];
+        state.checked = [];
+        state.showSolution = [];
+        state.currentQuestion = 0;
+        state.startTime = null;
+        state.errors = { name: false, class: false };
+        state.screen = 'start';
+        try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ---------- HELPERS ----------
+    function pluralize(n, one, two, five) {
+        const mod10 = n % 10;
+        const mod100 = n % 100;
+        if (mod100 >= 11 && mod100 <= 14) return five;
+        if (mod10 === 1) return one;
+        if (mod10 >= 2 && mod10 <= 4) return two;
+        return five;
+    }
+
+    function getResultTitle(percent) {
+        if (percent >= 90) return 'Превосходно!';
+        if (percent >= 70) return 'Хороший результат';
+        if (percent >= 50) return 'Неплохо, но есть над чем работать';
+        return 'Нужно повторить теорию';
+    }
+
+    function getResultSubtitle(percent) {
+        if (percent >= 90) return 'Вы отлично разбираетесь в теории вероятностей.';
+        if (percent >= 70) return 'Ещё немного практики — и будет идеально.';
+        if (percent >= 50) return 'Обратите внимание на задачи, где допущены ошибки.';
+        return 'Рекомендуем разобрать решения и попробовать снова.';
+    }
+
+    // ---------- INIT ----------
+    function init() {
+        loadProgress();
+        render();
+    }
+
+    init();
+    </script>
+</body>
+</html>
